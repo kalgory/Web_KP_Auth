@@ -1,5 +1,6 @@
 {
     "plugins": [
+        "@babel",
         "prettier"
     ],
     "env": {
@@ -14,7 +15,7 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "parser": "babel-eslint",
+    "parser": "@babel/eslint-parser",
     "rules": {
         "camelcase": "off",
         "import/no-extraneous-dependencies": [
