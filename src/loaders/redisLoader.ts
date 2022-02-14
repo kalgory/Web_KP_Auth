@@ -17,9 +17,13 @@ function redisLoader(app: express.Application) {
     throw new Error('Undefined Session Secret');
   }
 
-  redisClient.on('error', (error: NodeJS.ErrnoException) => {
-    console.log(`Redis Error ${error.message}`);
-  });
+  redisClient.on('connect', () => console.log('Redis Connect'));
+  redisClient.on('ready', () => console.log('Redis Ready'));
+  redisClient.on('reconnecting', () => console.log('Redis Reconnecting'));
+  redisClient.on('end', () => console.log('Redis End'));
+  redisClient.on('error', (error: NodeJS.ErrnoException) =>
+    console.log(`Redis Error ${error.message}`),
+  );
 
   app.use(
     session({
@@ -30,3 +34,5 @@ function redisLoader(app: express.Application) {
     }),
   );
 }
+
+export default redisLoader;
