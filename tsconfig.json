@@ -4,7 +4,7 @@
     "module": "CommonJS",
     "outDir": "./dist",
     "sourceMap": true,
-    "sourceRoot": "./src/bin",
+    "sourceRoot": "./src",
     "strict": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
