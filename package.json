@@ -1,0 +1,27 @@
+{
+  "name": "web_kp_auth",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "nodemon --exec ts-node src/app.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmin0211/Web_KP_Auth.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmin0211/Web_KP_Auth/issues"
+  },
+  "homepage": "https://github.com/dmin0211/Web_KP_Auth#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.17",
+    "ts-node": "^10.5.0"
+  }
+}
