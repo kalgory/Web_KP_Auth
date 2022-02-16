@@ -5,6 +5,8 @@ const userSchema = new Schema<UserType>(
   {
     userId: { type: String, trim: true, unique: true },
     password: { type: String, trim: true },
+    username: { type: String, trim: true },
+    profileImage: { type: String, trim: true },
     lastVisitedAt: { type: Date, default: Date.now },
   },
   { versionKey: false },
