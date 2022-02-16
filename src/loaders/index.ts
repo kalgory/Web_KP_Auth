@@ -6,6 +6,7 @@ import expressLoader from 'src/loaders/expressLoader';
 import redisLoader from 'src/loaders/redisLoader';
 import passportLoader from 'src/loaders/passportLoader';
 import mongooseLoader from 'src/loaders/mongooseLoader';
+import passportLocalLoader from 'src/loaders/passportLocalLoader';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ function loaders(app: express.Application) {
   redisLoader(app);
   mongooseLoader();
   passportLoader(app);
+  passportLocalLoader();
 }
 
 export default loaders;
