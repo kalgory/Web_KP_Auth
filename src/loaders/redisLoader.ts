@@ -10,6 +10,7 @@ function redisLoader(app: express.Application) {
     host: process.env.REDIS_HOST ?? 'localhost',
   };
   const redisClient = new Redis(redisOption);
+  const redisStore = new RedisStore({ client: redisClient, ttl: process.env.REDIS_TTL ?? 260 });
 
   const sessionSecret = process.env.REDIS_SECRET ?? false;
 
@@ -27,7 +28,7 @@ function redisLoader(app: express.Application) {
 
   app.use(
     session({
-      store: new RedisStore({ client: redisClient }),
+      store: redisStore,
       saveUninitialized: false,
       secret: sessionSecret,
       resave: false,
