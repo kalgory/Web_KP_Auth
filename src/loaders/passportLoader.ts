@@ -11,7 +11,6 @@ function passportLoader(app: express.Application): void {
   });
   passport.deserializeUser((user, done) => {
     console.log('재 접근');
-    console.log(user);
     done(null, false);
   });
 }
