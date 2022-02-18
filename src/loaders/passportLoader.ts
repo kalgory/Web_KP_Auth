@@ -6,12 +6,12 @@ function passportLoader(app: express.Application): void {
   app.use(passport.session());
 
   passport.serializeUser((user, done) => {
-    console.log('로그인 성공');
+    // Session 생성 유저
     done(null, { username: user.username, profileImage: user.profileImage });
   });
   passport.deserializeUser((user, done) => {
-    console.log('재 접근');
-    console.log(user);
+    // Session 있는 유저 재접근
+    // @TODO ttl 연장 로직 필요
     done(null, false);
   });
 }
