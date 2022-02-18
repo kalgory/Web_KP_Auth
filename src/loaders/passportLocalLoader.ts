@@ -5,7 +5,7 @@ import * as crypto from 'crypto';
 
 function createPasswordHash(password: string, salt: string): Promise<string> {
   return new Promise((resolve, reject) => {
-    const iterations = process.env.HASH_INTERATIONS;
+    const iterations = process.env.HASH_ITERATIONS;
     if (typeof iterations === 'undefined' || Number.isNaN(iterations)) {
       reject(new Error('configuration error'));
     } else {
