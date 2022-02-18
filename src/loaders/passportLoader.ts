@@ -11,7 +11,7 @@ function passportLoader(app: express.Application): void {
   });
   passport.deserializeUser((user, done) => {
     // Session 있는 유저 재접근
-    // ttl 연장 로직 필요
+    // @TODO ttl 연장 로직 필요
     done(null, false);
   });
 }
