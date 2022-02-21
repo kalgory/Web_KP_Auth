@@ -12,13 +12,13 @@ function passportLocalLoader() {
   type DoneFunction = (error: any, user?: any, options?: IVerifyOptions) => void;
 
   const localStrategyOptions = {
-    usernameField: 'userId',
+    usernameField: 'id',
     passwordField: 'password',
     session: true,
   };
-  const verifyLocalUser = async (userId: string, password: string, done: DoneFunction) => {
+  const verifyLocalUser = async (id: string, password: string, done: DoneFunction) => {
     try {
-      const user = await userService.findUserById(userId);
+      const user = await userService.findUserById(id);
 
       if (!user) {
         return done(null, false, { message: '존재하지 않는 유저입니다.' });
