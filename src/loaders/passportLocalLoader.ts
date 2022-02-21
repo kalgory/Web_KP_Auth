@@ -1,12 +1,7 @@
 import * as passport from 'passport';
 import { Strategy, IVerifyOptions } from 'passport-local';
 import { userService } from 'src/services';
-import * as crypto from 'crypto';
-import * as bcrypt from 'bcrypt';
-
-function comparePassword(password: string, hash: string): Promise<boolean> {
-  return bcrypt.compare(password, hash);
-}
+import Authorization from 'src/utils/Authorization';
 
 function passportLocalLoader() {
   type DoneFunction = (error: any, user?: any, options?: IVerifyOptions) => void;
@@ -26,7 +21,7 @@ function passportLocalLoader() {
       if (typeof user.password === 'undefined') {
         return done(null, false, { message: '비밀번호 암호화 되지 않은 사용자입니다.' });
       }
-      const isValidPassword = await comparePassword(password, user.password);
+      const isValidPassword = await Authorization.compareHashPassword(password, user.password);
       if (isValidPassword) {
         return done(null, user);
       }
