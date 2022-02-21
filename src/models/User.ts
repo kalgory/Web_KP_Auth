@@ -4,10 +4,7 @@ import { Schema, model } from 'mongoose';
 const userSchema = new Schema<UserType>(
   {
     userId: { type: String, trim: true, unique: true },
-    password: {
-      hash: { type: String },
-      salt: { type: String },
-    },
+    password: { type: String, trim: true },
     username: { type: String, trim: true },
     profileImage: { type: String, trim: true },
     lastVisitedAt: { type: Date, default: Date.now },

@@ -3,7 +3,7 @@ import { Types } from 'mongoose';
 interface UserType {
   _id?: Types.ObjectId;
   userId: string;
-  password: { hash: string; salt: string } | undefined;
+  password: string;
   username: string;
   profileImage: string;
   lastVisitedAt?: Date;

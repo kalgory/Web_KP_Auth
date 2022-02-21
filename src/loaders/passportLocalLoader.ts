@@ -2,27 +2,10 @@ import * as passport from 'passport';
 import { Strategy, IVerifyOptions } from 'passport-local';
 import { userService } from 'src/services';
 import * as crypto from 'crypto';
+import * as bcrypt from 'bcrypt';
 
-function createPasswordHash(password: string, salt: string): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const iterations = process.env.HASH_ITERATIONS;
-    if (typeof iterations === 'undefined' || Number.isNaN(iterations)) {
-      reject(new Error('configuration error'));
-    } else {
-      crypto.pbkdf2(password, salt, parseInt(iterations, 10), 64, 'sha512', (error, hash) => {
-        if (error) reject(error);
-        resolve(hash.toString('base64'));
-      });
-    }
-  });
-}
-
-async function compareHashPassword(
-  password: string,
-  { hash, salt }: { hash: string; salt: string },
-) {
-  const newHash = await createPasswordHash(password, salt);
-  return newHash === hash;
+function comparePassword(password: string, hash: string): Promise<boolean> {
+  return bcrypt.compare(password, hash);
 }
 
 function passportLocalLoader() {
@@ -43,7 +26,7 @@ function passportLocalLoader() {
       if (typeof user.password === 'undefined') {
         return done(null, false, { message: '비밀번호 암호화 되지 않은 사용자입니다.' });
       }
-      const isValidPassword = await compareHashPassword(password, user.password);
+      const isValidPassword = await comparePassword(password, user.password);
       if (isValidPassword) {
         return done(null, user);
       }
