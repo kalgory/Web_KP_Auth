@@ -1,15 +1,12 @@
 import * as express from 'express';
 import * as passport from 'passport';
-
-const cookieOption = {
-  maxAge: process.env.COOKIE_AGE,
-  secure: true,
-  httpOnly: true,
-};
+import Authorization from 'src/utils/Authorization';
 
 function signController() {
+  const { cookieOption } = Authorization();
+
   const signInController = (req: express.Request, res: express.Response) => {
-    res.cookie('session', req.session.id);
+    res.cookie('session', req.session.id, cookieOption).send();
   };
 
   return { signInController };

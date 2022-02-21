@@ -4,6 +4,5 @@ import loaderInit from 'src/loaders';
 import routesInit from 'src/routes';
 
 const app: express.Application = express();
-
 loaderInit(app);
 routesInit(app);
