@@ -2,7 +2,7 @@ import { Types } from 'mongoose';
 
 interface UserType {
   _id?: Types.ObjectId;
-  id: string;
+  email: string;
   password: string;
   username: string;
   profileImage: string;

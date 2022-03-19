@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "nodemon --exec ts-node src/app.ts",
-    "pm2": "pm2 restart node_modules/.bin/ts-node -- -r tsconfig-paths/register ./src/app.ts",
+    "pm2": "pm2 restart node_modules/.bin/ts-node -- -r tsconfig-paths/register ./src/app.ts"
   },
   "repository": {
     "type": "git",

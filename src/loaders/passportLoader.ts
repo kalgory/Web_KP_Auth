@@ -7,7 +7,7 @@ function passportLoader(app: express.Application): void {
 
   passport.serializeUser((user, done) => {
     // Session 생성 유저
-    done(null, { username: user.username, profileImage: user.profileImage });
+    done(null, { email: user.email, username: user.username, profileImage: user.profileImage });
   });
   passport.deserializeUser((user, done) => {
     // Session 있는 유저 재접근
