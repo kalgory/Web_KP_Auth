@@ -1,11 +1,11 @@
 import { User } from 'src/models';
 
 function userService() {
-  function findUserById(userId: string) {
-    return User.findOne({ userId });
+  function findUserByEmail(email: string) {
+    return User.findOne({ email });
   }
 
-  return { findUserById };
+  return { findUserByEmail };
 }
 
 export default userService();

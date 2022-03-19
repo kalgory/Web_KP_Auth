@@ -9,13 +9,13 @@ function passportLocalLoader() {
   const { compareHashPassword } = Authorization();
 
   const localStrategyOptions = {
-    usernameField: 'id',
+    usernameField: 'email',
     passwordField: 'password',
     session: true,
   };
-  const verifyLocalUser = async (id: string, password: string, done: DoneFunction) => {
+  const verifyLocalUser = async (email: string, password: string, done: DoneFunction) => {
     try {
-      const user = await userService.findUserById(id);
+      const user = await userService.findUserByEmail(email);
 
       if (!user) {
         return done(null, false, { message: '존재하지 않는 유저입니다.' });
